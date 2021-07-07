@@ -3,6 +3,7 @@ const api = require("novelcovid");
 const bodyParser = require("body-parser");
 const { render } = require("ejs");
 const moment = require('moment');
+
 api.settings({
     baseUrl: 'https://corona.lmao.ninja'
 });
@@ -41,9 +42,6 @@ app.get('/history/:countryName', async(req, res) => {
     for (var i in historyRecovered){
         recoveredData.push(historyRecovered[i]);
     }
-    // function capitalizeFirstLetter(string) {
-    //     return string.charAt(0).toUpperCase() + string.slice(1);
-    //   }
     let  formattedCountry = countryName.toUpperCase(); 
     res.render("country", {caseData, deathData, recoveredData, caseLabel, updatedFormatted, formattedCountry} );
     caseData = [];
@@ -57,7 +55,7 @@ app.get('/*', async (req, res) => {
     const global = await api.all();
     const countries = await api.countries({ sort: 'cases' });
     const updated = global.updated;
-    //const updatedFormat = new Date(updated).toLocaleString('en-US', {timeZoneName: "short"});//moment.unix(updated).startOf('hour').fromNow(); 
+    
     const updatedFormatted = moment(updated).fromNow();
     res.render('index', { cases: thousands_separators(global.cases), 
         deaths: thousands_separators(global.deaths), 
