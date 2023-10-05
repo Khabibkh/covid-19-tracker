@@ -1,6 +1,5 @@
 {
     "workbench.view.alwaysShowHeaderActions": true,
-    "editor.renderIndentGuides": false,
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -17,5 +16,6 @@
         "**/*.log": true,
         "**/.vscode": true
     },
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "editor.guides.indentation": false
 }
